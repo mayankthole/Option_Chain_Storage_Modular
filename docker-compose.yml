@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: option-chain-collector
+    restart: always
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env
+    depends_on:
+      - db
+    environment:
+      - TZ=Asia/Kolkata
+    networks:
+      - option-chain-network
+
+  db:
+    image: postgres:13
+    container_name: option-chain-db
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - option-chain-network
+
+volumes:
+  postgres_data:
+
+networks:
+  option-chain-network:
+    driver: bridge 

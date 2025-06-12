@@ -1,0 +1,7 @@
+pandas>=2.0.3
+psycopg2-binary==2.9.5
+python-dotenv==0.19.2
+SQLAlchemy==1.4.41
+certifi==2023.7.22
+urllib3==1.26.15 
+Dhan-Tradehull==3.0.6

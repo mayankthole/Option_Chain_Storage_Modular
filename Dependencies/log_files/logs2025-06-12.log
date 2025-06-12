@@ -1,0 +1,200 @@
+INFO:2025-06-12 11:16:29,483:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:16:29,483:MainThread:STARTED THE PROGRAM
+ERROR:2025-06-12 11:16:30,667:MainThread:got exception in get_login as <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)> 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1479, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/Dhan_Tradehull/Dhan_Tradehull.py", line 75, in get_login
+    self.instrument_df 									= self.get_instrument_file()
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/Dhan_Tradehull/Dhan_Tradehull.py", line 107, in get_instrument_file
+    instrument_df = pd.read_csv("https://images.dhan.co/api-data/api-scrip-master.csv", low_memory=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/common.py", line 728, in get_handle
+    ioargs = _get_filepath_or_buffer(
+        path_or_buf,
+    ...<3 lines>...
+        storage_options=storage_options,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/common.py", line 384, in _get_filepath_or_buffer
+    with urlopen(req_info) as req:
+         ~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pandas/io/common.py", line 289, in urlopen
+    return urllib.request.urlopen(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)>
+INFO:2025-06-12 11:17:33,168:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:17:33,168:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:18:09,360:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:18:09,360:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:18:51,761:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:18:51,761:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:19:31,324:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:19:31,324:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:26:56,543:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:26:56,543:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:28:28,090:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:28:28,090:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:29:43,299:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:29:43,299:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:30:57,021:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:30:57,021:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:33:15,102:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:33:15,103:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:35:04,906:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:35:04,906:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:37:56,524:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:37:56,524:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:40:11,409:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:40:11,410:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:41:35,263:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:41:35,263:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:44:00,778:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:44:00,778:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:47:20,303:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:47:20,303:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 11:52:03,058:MainThread:Dhan.py  started system
+INFO:2025-06-12 11:52:03,058:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:11:28,533:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:11:28,533:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:17:27,921:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:17:27,922:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:18:22,880:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:18:22,880:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:20:47,575:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:20:47,575:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:22:44,441:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:22:44,441:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:25:07,548:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:25:07,548:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:26:44,335:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:26:44,335:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:31:25,080:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:31:25,080:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:33:00,698:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:33:00,698:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:36:36,925:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:36:36,925:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:50:55,540:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:50:55,540:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 19:57:53,314:MainThread:Dhan.py  started system
+INFO:2025-06-12 19:57:53,314:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:03:11,160:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:03:11,160:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:04:45,774:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:04:45,774:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:08:26,918:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:08:26,918:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:11:39,717:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:11:39,717:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:15:09,031:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:15:09,031:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:15:44,899:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:15:44,900:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:17:01,623:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:17:01,623:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:18:30,201:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:18:30,201:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:22:32,246:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:22:32,247:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:27:39,190:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:27:39,190:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 20:30:00,460:MainThread:Dhan.py  started system
+INFO:2025-06-12 20:30:00,460:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 21:06:18,634:MainThread:Dhan.py  started system
+INFO:2025-06-12 21:06:18,634:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 21:10:22,242:MainThread:Dhan.py  started system
+INFO:2025-06-12 21:10:22,242:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 21:11:15,432:MainThread:Dhan.py  started system
+INFO:2025-06-12 21:11:15,432:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 22:03:49,666:MainThread:Dhan.py  started system
+INFO:2025-06-12 22:03:49,666:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 22:14:48,131:MainThread:Dhan.py  started system
+INFO:2025-06-12 22:14:48,131:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 22:37:29,936:MainThread:Dhan.py  started system
+INFO:2025-06-12 22:37:29,936:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 22:38:44,487:MainThread:Dhan.py  started system
+INFO:2025-06-12 22:38:44,487:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 22:39:55,308:MainThread:Dhan.py  started system
+INFO:2025-06-12 22:39:55,308:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 23:40:12,110:MainThread:Dhan.py  started system
+INFO:2025-06-12 23:40:12,110:MainThread:STARTED THE PROGRAM
+INFO:2025-06-12 23:40:15,493:MainThread:Starting option chain data collection...
+INFO:2025-06-12 23:40:15,494:MainThread:Market closed for today. Sleeping until next trading day: 2025-06-13 09:15:02
