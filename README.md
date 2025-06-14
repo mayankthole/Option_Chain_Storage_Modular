@@ -188,3 +188,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For support, please open an issue in the repository or contact the maintainers. # Option-Chain-Storage
 # Option-Chain-Storage
+
+
+
+Note
+
+The rate limit applicable for Option Chain API is at 1 request per 3 second. This is because OI data gets updated slow, compared to LTP or other data parameter.# Option_Chain_Storage_Modular
